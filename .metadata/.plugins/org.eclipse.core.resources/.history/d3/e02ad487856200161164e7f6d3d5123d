@@ -1,0 +1,70 @@
+package br.com.componente.testes;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
+import br.com.componente.arquivo.Arquivo;
+import br.com.componente.src.Armazenamento;
+import br.com.componente.src.TipoPonto;
+import br.com.componente.src.Usuario;
+
+public class TestesComponenteDeGamificacao {
+	
+	@Test
+	public void testeCriaArquivo() {
+		Arquivo arquivo = new Arquivo("testeCriacao.txt");
+		assertTrue(arquivo.existe());
+	}
+	
+	@Test
+	public void testeEscreveArquivo() {
+		Arquivo arquivo = new Arquivo("testeCriacao2.txt");
+		arquivo.escreve("escrevendo primeiro texto");
+		assertEquals("escrevendo primeiro texto", arquivo.getTextoArquivo());
+	}
+	
+	@Test
+	public void testeArmazenarPonto() {
+		Armazenamento armazenamento =  new Armazenamento();
+		TipoPonto tipoPonto = new TipoPonto("estrela");
+		Usuario usuario = new Usuario("guerra");
+		armazenamento.armazena(usuario, tipoPonto, 10);
+		assertEquals("GUERRA;ESTRELA;10;", armazenamento.getUltimoArmazenado());
+	}
+	
+	@Test
+	public void testeRecuperaPorUserETipo() {
+		Armazenamento armazenamento =  new Armazenamento();
+		TipoPonto tipoPonto = new TipoPonto("estrela");
+		Usuario usuario = new Usuario("guerra");
+		armazenamento.armazena(usuario, tipoPonto, 10);
+		assertEquals("GUERRA;ESTRELA;10;", armazenamento.getUltimoArmazenado());
+	}
+	
+	/*
+	//Armazenar que um usuário recebeu uma quantidade de um tipo de ponto. Por exemplo: o usuário "guerra" recebeu "10" pontos do tipo "estrela"
+	//Recuperar quantos pontos de um tipo tem um usuário. Por exemplo: retornar quantos pontos do tipo "estrela" tem o usuário "guerra"
+	@Test
+	public void testeArmazenarPonto() {
+		Armazenamento armazenamento =  new Armazenamento();
+		TipoPonto tipoPonto = new TipoPonto("estrela");
+		Usuario usuario = new Usuario("guerra");
+		armazenamento.armazenaNovoPonto(usuario, tipoPonto, 10);
+		assertEquals(10, armazenamento.getQtdePontos(usuario, tipoPonto));
+	}
+	
+	@Test
+	public void testeRetornaTodosUsuariosComPonto() {
+		Armazenamento armazenamento =  new Armazenamento();
+		TipoPonto tipoPonto = new TipoPonto("estrela");
+		Usuario usuario = new Usuario("guerra");
+		armazenamento.armazenaNovoPonto(usuario, tipoPonto, 10);
+		assertEquals(10, armazenamento.getQtdePontos(usuario, tipoPonto));
+	}
+	
+	
+	
+*/
+}

@@ -1,0 +1,5 @@
+1470607024138	Encapsulate field 'numero'
+1470607036155	Encapsulate field 'saldo'
+1470607363469	Rename type 'MockContaCorrente'
+1470610368849	Rename method 'logar'
+1470611548962	Encapsulate field 'numeroContaCartao'

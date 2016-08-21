@@ -1,0 +1,5 @@
+package br.com.componente.exception;
+
+public class ArquivoJaExistenteException extends AssertionError {
+
+}

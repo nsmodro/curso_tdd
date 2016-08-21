@@ -1,0 +1,32 @@
+1471207384675	Rename package 'br.com.componete.testes'
+1471207447685	Rename package 'br.com.componente.arquivoTXT'
+1471207479444	Move compilation unit
+1471207777538	Rename method 'criaArquivo'
+1471212261474	Delete element
+1471212376362	Rename local variable 'string'
+1471213183969	Rename type 'ArquivoTXT'
+1471213211305	Delete element
+1471213261742	Delete element
+1471213321634	Delete element
+1471214263079	Encapsulate field 'nomeUsuario'
+1471215443807	Delete element
+1471215678714	Encapsulate field 'tipoPonto'
+1471215801889	Extract method 'montaTexto'
+1471216133588	Rename method 'getArmazenamento'
+1471220730323	Rename type 'TestesTDD'
+1471220829443	Rename type 'ArquivoTxt'
+1471220864305	Delete elements
+1471221140328	Extract method 'existe'
+1471222260660	Rename local variable 'ip'
+1471223518328	Delete element
+1471228538370	Delete elements
+1471229538356	Delete element
+1471229549247	Delete elements
+1471229920037	Delete element
+1471229925126	Delete element
+1471231493011	Delete elements
+1471232347073	Delete elements
+1471232615439	Delete elements
+1471232785721	Delete elements
+1471232869007	Delete elements
+1471233027041	Delete elements

@@ -1,0 +1,25 @@
+package br.com.componente.src;
+
+import java.io.IOException;
+
+import br.com.componente.arquivo.ArquivoTxt;
+
+public class Armazenamento {
+	
+	private static final String nomeArquivoPontos = "pontucao.txt";
+
+	public void armazenaNovoPonto(Usuario usuario, TipoPonto tipoPonto, int qtdePontos) {
+		ArquivoTxt arquivoTxt = new ArquivoTxt();
+		
+		String texto = "\nUser: " + usuario.getNomeUsuario() + "\nTipo Ponto : " tipoPonto.getTipoPonto() + "\nQuantidade: " + qtdePontos;
+		
+		try {
+			arquivoTxt.criarArquivoEEscreve(nomeArquivoPontos, "blá blá bla");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+}

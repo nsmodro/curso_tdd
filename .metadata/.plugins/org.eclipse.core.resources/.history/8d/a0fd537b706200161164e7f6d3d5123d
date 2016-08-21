@@ -1,0 +1,18 @@
+package br.com.componente.src;
+
+import java.io.IOException;
+
+import br.com.componente.arquivo.ArquivoTxt;
+
+public class Armazenamento {
+	
+	private static final String nomeArquivoPontos = "pontucao.txt";
+
+	public void armazenaNovoPonto(Usuario usuario, TipoPonto tipoPonto, int qtdePontos) throws IOException {
+		ArquivoTxt arquivoTxt = new ArquivoTxt();
+		arquivoTxt.criarArquivo(nomeArquivoPontos);
+		
+		
+	}
+
+}

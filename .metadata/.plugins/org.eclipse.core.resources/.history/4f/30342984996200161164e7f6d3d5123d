@@ -1,0 +1,123 @@
+package br.com.componente.arquivo;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Writer;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class Arquivo {
+
+	private File arquivo;
+	private BufferedWriter writer;
+
+	public Arquivo(String nomeArquivo) {
+		criarArquivo(nomeArquivo);
+	}
+
+	private void criarArquivo(String nomeArquivo) {
+		if (!existe(nomeArquivo)) {
+			try {
+				arquivo = new File(nomeArquivo);
+				arquivo.createNewFile();
+				writer = new BufferedWriter(new FileWriter(arquivo));
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	public boolean existe(String nomeArquivo) {
+		try {
+			FileReader fileReader = new FileReader(nomeArquivo);
+			BufferedReader reader = new BufferedReader(fileReader);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return reader != null ? true : false;
+		// return (arquivo != null && arquivo.exists());
+	}
+
+	public void escreve(String texto) {
+		try {
+			writer.write(texto);
+			writer.newLine();
+			writer.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/*
+	 * public void escreve(String texto) { try { BufferedWriter writer = new
+	 * BufferedWriter(new FileWriter(arquivo)); writer.write(texto);
+	 * writer.flush(); //writer.close();
+	 * 
+	 * FileWriter fileWriter = new FileWriter(arquivo); fileWriter.write(texto);
+	 * fileWriter.flush(); fileWriter.close(); } catch (IOException e) {
+	 * e.printStackTrace(); } }
+	 */
+
+	public String getTextoArquivo() {
+		String textoArquivo = new String();
+		try {
+			InputStream is = new FileInputStream(arquivo);
+			Scanner scanner = new Scanner(is);
+			while (scanner.hasNext()) {
+				textoArquivo += scanner.nextLine();
+			}
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return textoArquivo;
+	}
+
+	public List<Object> getTextoArquivoEmLista() {
+		List<Object> list = new ArrayList<>();
+		try {
+			InputStream is = new FileInputStream(arquivo);
+			Scanner scanner = new Scanner(is);
+			while (scanner.hasNext()) {
+				String[] linha = scanner.nextLine().split(";");
+				list.add(linha);
+			}
+			scanner.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	/*
+	 * public void criarArquivoEEscreve(String nomeTxt, String texto) throws
+	 * IOException { FileWriter fw = new FileWriter(criarArquivo(nomeTxt));
+	 * fw.write(texto); fw.close(); }
+	 * 
+	 * public int leArquivo(String nomearquivopontos, Usuario usuario, TipoPonto
+	 * tipoPonto) {
+	 * 
+	 * int somaPontos = 0; Scanner entrada; try { InputStream is = new
+	 * FileInputStream(nomearquivopontos); entrada = new Scanner(is);
+	 * 
+	 * while (entrada.hasNextLine()) { String linha = entrada.nextLine(); if
+	 * (linha.isEmpty()) continue; if (linha.equals("User: " +
+	 * usuario.getNomeUsuario())) { if (entrada.nextLine().equals(
+	 * "Tipo Ponto : " + tipoPonto.getTipoPonto())) { String pontos =
+	 * entrada.nextLine(); somaPontos += new
+	 * Integer(pontos.substring(12)).intValue(); } } } entrada.close();
+	 * 
+	 * } catch (FileNotFoundException e) { e.printStackTrace(); }
+	 * 
+	 * return somaPontos; }
+	 * 
+	 */}

@@ -1,0 +1,7 @@
+package br.com.componente.src;
+
+public class Usuario {
+	
+	private String nomeUsuario;
+
+}

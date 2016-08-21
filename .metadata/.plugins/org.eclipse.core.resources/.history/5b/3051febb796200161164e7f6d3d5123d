@@ -1,0 +1,31 @@
+package br.com.componente.src;
+
+import java.io.IOException;
+
+import br.com.componente.arquivo.ArquivoTxt;
+
+public class Armazenamento {
+	
+	private static final String nomeArquivoPontos = "pontucao.txt";
+	private ArquivoTxt arquivoTxt;
+
+	public void armazenaNovoPonto(Usuario usuario, TipoPonto tipoPonto, int qtdePontos) {
+		arquivoTxt = new ArquivoTxt();
+		
+		try {
+			arquivoTxt.criarArquivoEEscreve(nomeArquivoPontos, montaTexto(usuario, tipoPonto, qtdePontos));
+			//int i = arquivoTxt.leArquivo(usuario, tipoPonto);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private String montaTexto(Usuario usuario, TipoPonto tipoPonto, int qtdePontos) {
+		return "\nUser: " + usuario.getNomeUsuario() + "\nTipo Ponto : " + tipoPonto.getTipoPonto() + "\nQuantidade: " + qtdePontos;
+	}
+
+	/*public int getQtdePontos(Usuario usuario, TipoPonto tipoPonto) {		
+		return arquivoTxt.leArquivo(nomeArquivoPontos,usuario, tipoPonto);
+	}*/
+
+}
